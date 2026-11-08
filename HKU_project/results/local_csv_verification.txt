@@ -1,0 +1,10 @@
+Local restaurant input verification — 2026-11-03
+Input CSV SHA-256: 375e86ae46a948e6ee1898b7396ace55b5f775d328d939dc7b8de55bbb3f6e27.
+CSV fingerprint derived from the original member of Kaggle version 2 after the archive hash was verified.
+PASS: full RAW reconstruction used a local CSV in a directory named hku project, with all data downloads disabled.
+PASS: 131807 analysis outlets in 862 counties; complete sequential sample flow matched the original.
+PASS: sample flow, summary metrics, linear models, Poisson robustness, leave-one-state-out and income-bin results reproduced the original values (rtol 1e-9, atol 1e-10).
+PASS: generated LaTeX numbers and tables matched the original files byte for byte.
+PASS: RStudio-style source() with assessment.mode and assessment.data_dir options reached data loading without downloads.
+The 200k companion file is not appended.
+The verification used the original public CSV, not files read from the user's Mac.

@@ -1,0 +1,11 @@
+stage,outlets,dropped_at_step
+Raw rows in the 380K file,380358,0
+Explicit United States address,305854,74504
+Valid coordinates in the contiguous US bounding box,301642,4212
+Unique Google IDs or name and coordinate fallback,137147,164495
+Unique normalized names and coordinates,137135,12
+Observed primary and secondary categories,137121,14
+Eating outlet category rule,135072,2049
+Unique full resolution county polygon match,135072,0
+Complete county income population and land area,135072,0
+Main analysis counties with at least 30 listings,131807,3265

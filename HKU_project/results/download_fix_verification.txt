@@ -1,0 +1,11 @@
+Download fix verification — 2026-11-03
+R 4.3.3; data.table 1.14.10; sf 1.0.15; ggplot2 3.4.4; sandwich 3.1.0; digest 0.6.34.
+PASS: valid HTTP download, cached reuse, corrupted-cache rejection, HTTP 200 with wrong bytes rejection.
+PASS: HTTP 403 yields actionable recovery and leaves no cached error response or partial file.
+PASS: transient HTTP 503 failures retry up to three requests; explicit user-agent sent.
+PASS: all four bundled Census raw inputs match the original pinned SHA-256 hashes.
+PASS: RStudio-style source() from /tmp selects CLEAN mode with all data downloads forbidden by a stub.
+PASS: five exported result tables reproduce the original values to relative tolerance 1e-9 and absolute tolerance 1e-10.
+PASS: R-generated LaTeX numbers and tables match the original files byte for byte.
+The RAW cleaning and county assignment stages were not rerun in this verification; their analytical code is unchanged.
+The delivered PDF files and Overleaf source are unchanged by the download fix.

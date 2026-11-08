@@ -1,0 +1,12 @@
+linear_models.csv: reproduced to relative tolerance 1e-10 and absolute tolerance 1e-12
+poisson_robustness.csv: reproduced to relative tolerance 1e-10 and absolute tolerance 1e-12
+summary_metrics.csv: reproduced to relative tolerance 1e-10 and absolute tolerance 1e-12
+income_bins.csv: reproduced to relative tolerance 1e-10 and absolute tolerance 1e-12
+leave_one_state_out.csv: reproduced to relative tolerance 1e-10 and absolute tolerance 1e-12
+R-generated numeric LaTeX macros: byte-identical
+Relocated clean-data rerun: completed without raw downloads
+All four LaTeX entry points: compiled successfully
+Page counts: brief 2 main text plus 1 references; appendix 2; declaration 1; combined 6
+All six standalone PDF pages visually inspected; no clipping or text overlap
+Embedded Times New Roman checked with pdffonts
+Map display geometry generalized at 750m; county assignment uses full-resolution TIGER

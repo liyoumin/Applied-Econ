@@ -1,0 +1,6 @@
+package,version
+data.table,1.17.8
+sf,1.0.21
+ggplot2,4.0.1
+sandwich,3.1.1
+digest,0.6.37

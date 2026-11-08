@@ -1,0 +1,12 @@
+All verification checks passed.
+Raw row-count assertion: 380358
+Source files: versioned URLs; SHA-256 checksums verified when read.
+County covariate keys are unique; spatial assignment accepts exactly one polygon only.
+Analysis counts satisfy 0 <= specialist <= broad <= total; zero outcomes retained.
+County identifiers remain five-character strings; estimates use state-clustered HC1 standard errors.
+Main 95% intervals use t critical values with G - 1 degrees of freedom.
+Analysis sample: 862 counties; 131807 outlets; 48 states including DC if present.
+Negative linear fitted values (broad; specialist): 0 ; 80
+The linear model estimates a projection; negative fitted values are not interpreted as probabilities.
+Poisson robustness estimates are in results/poisson_robustness.csv.
+Read README.md for scope, source dates, interpretation, and submission review.

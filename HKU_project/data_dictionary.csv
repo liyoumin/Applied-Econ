@@ -1,0 +1,52 @@
+file,variable,units_or_type,definition,source
+restaurants_clean.csv.gz,source_row,integer,Raw 380K CSV row index excluding the header; deterministic tie breaker,Kaggle version 2
+restaurants_clean.csv.gz,location_id,string,Google identifier extracted from Link; normalized name and rounded coordinates if unavailable,Constructed from Kaggle
+restaurants_clean.csv.gz,title,text,Restaurant or outlet title retained from the preferred duplicate record,Kaggle Title
+restaurants_clean.csv.gz,title_key,text,Lowercase title with punctuation and whitespace removed; used for duplicate and repeated-name checks,Constructed from title
+restaurants_clean.csv.gz,category,text,Observed primary category retained from the preferred duplicate record,Kaggle Category
+restaurants_clean.csv.gz,categories,text,Observed secondary category list stored as text; never evaluated as executable code,Kaggle Categories
+restaurants_clean.csv.gz,address,text,Observed address ending explicitly in United States,Kaggle Address
+restaurants_clean.csv.gz,latitude,decimal degrees,Numeric latitude after validity filtering; used as EPSG 4326 input,Kaggle Latitude
+restaurants_clean.csv.gz,longitude,decimal degrees,Numeric longitude after validity filtering; used as EPSG 4326 input,Kaggle Longitude
+restaurants_clean.csv.gz,rating,1 to 5 or missing,Numeric rating; missing or invalid values become NA; not used as a regression outcome or control,Kaggle Rating
+restaurants_clean.csv.gz,county_fips,five-character string,State FIPS plus county code; preserve leading zeros,2021 TIGER location match or Census source
+restaurants_clean.csv.gz,state_fips,two-character string,State FIPS code; state fixed effect and clustering group,2021 TIGER / Census
+restaurants_clean.csv.gz,specialist,0 or 1,"Primary category is vegan restaurant, vegetarian restaurant, or vegetarian cafe and deli, ignoring case",Constructed from Category
+restaurants_clean.csv.gz,any_veg_tag,0 or 1,Primary specialist or a whole-word vegan or vegetarian match in the observed secondary list,Constructed from Category and Categories
+restaurants_clean.csv.gz,taco_bell,0 or 1,Normalized title is exactly tacobell,Constructed from title_key
+restaurants_clean.csv.gz,same_name_locations,count,Number of deduplicated food outlets with the same normalized title before county eligibility filtering,Constructed from title_key
+restaurants_clean.csv.gz,repeated_name_10,0 or 1,At least ten locations share a normalized title; a proxy rather than a validated chain designation,Constructed from same_name_locations
+restaurants_clean.csv.gz,analysis_sample,TRUE or FALSE,County has complete positive covariates and at least 30 retained listings; outlet flag uses its county eligibility,Constructed
+county_analysis.csv,county_fips,five-character string,State FIPS plus county code; preserve leading zeros,2021 TIGER location match or Census source
+county_analysis.csv,n_outlets,count,Retained eating-outlet listings within the county before the county-count threshold,Aggregated cleaned Kaggle listings
+county_analysis.csv,specialist_n,count,County sum of primary specialist indicators; zero is retained,Aggregated specialist
+county_analysis.csv,broad_n,count,County sum of any vegan or vegetarian tag indicators; zero is retained,Aggregated any_veg_tag
+county_analysis.csv,taco_n,count,County number of exact normalized Taco Bell names,Aggregated taco_bell
+county_analysis.csv,taco_broad_n,count,County number of Taco Bell outlets with any vegan or vegetarian tag,Aggregated taco_bell times any_veg_tag
+county_analysis.csv,nonrepeat_n,count,County number of outlets whose normalized title appears fewer than ten times,Aggregated repeated_name_10 screen
+county_analysis.csv,nonrepeat_specialist_n,count,County primary specialists after excluding repeated-name proxy outlets,Aggregated filtered specialist
+county_analysis.csv,nonrepeat_broad_n,count,County broadly tagged outlets after excluding repeated-name proxy outlets,Aggregated filtered any_veg_tag
+county_analysis.csv,state_fips,two-character string,State FIPS code; state fixed effect and clustering group,2021 TIGER / Census
+county_analysis.csv,county_code,integer,Three-digit county component represented as an integer here; use county_fips as the join key,Census SAIPE 2021
+county_analysis.csv,income_2021,2021 US dollars,2021 model-based median household income estimate; not a direct measure of patrons income,Census SAIPE 2021 positions 134 to 139
+county_analysis.csv,income_lower90,2021 US dollars,Lower bound of the source 90 percent income interval; retained but not propagated into model inference,Census SAIPE 2021 positions 141 to 146
+county_analysis.csv,income_upper90,2021 US dollars,Upper bound of the source 90 percent income interval; retained but not propagated into model inference,Census SAIPE 2021 positions 148 to 153
+county_analysis.csv,poverty_pct_2021,percent,2021 all-ages poverty percentage; retained for context and not included in the main model,Census SAIPE 2021 positions 35 to 38
+county_analysis.csv,county_name,text,Official state or county name in the SAIPE file; not a join key,Census SAIPE 2021
+county_analysis.csv,state_abbr,two-letter text,Postal state abbreviation,Census SAIPE 2021
+county_analysis.csv,population_2021,residents,July 1 2021 resident population estimate from Vintage 2021,Census co-est2021-alldata.csv POPESTIMATE2021
+county_analysis.csv,land_km2,square kilometers,TIGER ALAND divided by one million; water area is excluded,Census TIGER 2021 ALAND
+county_analysis.csv,density_2021,residents per square kilometer,2021 population divided by county land area,Constructed from population_2021 and land_km2
+county_analysis.csv,complete_covariates,TRUE or FALSE,Income and density are finite and strictly positive,Constructed
+county_analysis.csv,analysis_sample,TRUE or FALSE,County has complete positive covariates and at least 30 retained listings; outlet flag uses its county eligibility,Constructed
+county_covariates.csv,county_fips,five-character string,State FIPS plus county code; preserve leading zeros,2021 TIGER location match or Census source
+county_covariates.csv,state_fips,two-character string,State FIPS code; state fixed effect and clustering group,2021 TIGER / Census
+county_covariates.csv,county_code,integer,Three-digit county component represented as an integer here; use county_fips as the join key,Census SAIPE 2021
+county_covariates.csv,income_2021,2021 US dollars,2021 model-based median household income estimate; not a direct measure of patrons income,Census SAIPE 2021 positions 134 to 139
+county_covariates.csv,income_lower90,2021 US dollars,Lower bound of the source 90 percent income interval; retained but not propagated into model inference,Census SAIPE 2021 positions 141 to 146
+county_covariates.csv,income_upper90,2021 US dollars,Upper bound of the source 90 percent income interval; retained but not propagated into model inference,Census SAIPE 2021 positions 148 to 153
+county_covariates.csv,poverty_pct_2021,percent,2021 all-ages poverty percentage; retained for context and not included in the main model,Census SAIPE 2021 positions 35 to 38
+county_covariates.csv,county_name,text,Official state or county name in the SAIPE file; not a join key,Census SAIPE 2021
+county_covariates.csv,state_abbr,two-letter text,Postal state abbreviation,Census SAIPE 2021
+county_covariates.csv,population_2021,residents,July 1 2021 resident population estimate from Vintage 2021,Census co-est2021-alldata.csv POPESTIMATE2021
+county_covariates.csv,land_km2,square kilometers,TIGER ALAND divided by one million; water area is excluded,Census TIGER 2021 ALAND
