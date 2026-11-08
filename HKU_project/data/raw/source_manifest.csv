@@ -1,0 +1,6 @@
+file,url,sha256,bytes,accessed_utc,acquisition,archive_member,source_archive_sha256
+380K_US_Restaurants.csv,https://www.kaggle.com/api/v1/datasets/download/kwxdata/380k-restaurants-mostly-usa-based?datasetVersionNumber=2,375e86ae46a948e6ee1898b7396ace55b5f775d328d939dc7b8de55bbb3f6e27,615735795,2026-11-03 07:15:22 UTC,local_csv_hash_verified,380K_US_Restaurants.csv,d81dd7782a18994e340a539db73b54cdcb8978008073c811b8c3ff728a0ea9e2
+saipe_2021_county.txt,https://www2.census.gov/programs-surveys/saipe/datasets/2021/2021-state-and-county/est21all.txt,f72a5e3a3fb96e2a32dad955cce3c0575eee4e5aa26fabd0076b1f6fa8c22fb0,846675,2026-11-03 07:15:22 UTC,,,
+population_2021_county.csv,https://www2.census.gov/programs-surveys/popest/datasets/2020-2021/counties/totals/co-est2021-alldata.csv,684883133405a88edbd43156382ccd7771fe1d6608b7ea1b992cb28bb6d31c83,645814,2026-11-03 07:15:22 UTC,,,
+counties_2021.zip,https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_500k.zip,0262e163a6b2effa8e73863912814d499f6bdd07a05726960e0f4135ca62df1e,11838247,2026-11-03 07:15:22 UTC,,,
+tiger_counties_2021.zip,https://www2.census.gov/geo/tiger/TIGER2021/COUNTY/tl_2021_us_county.zip,26890ff92275ff1392cd205c7021ba510b7f63f2ff985ca327b9f5fd5e9ecc90,82328531,2026-11-03 07:15:24 UTC,,,
