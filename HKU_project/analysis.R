@@ -2,14 +2,7 @@
 # Youmin Li | Stage 1 assessment | Dataset option 2
 # County income and the visibility of plant-based dining
 # Run from any directory: Rscript /path/to/analysis.R
-# Default: use the complete bundled cleaned data when present; otherwise use raw inputs.
-# Optional: --from-clean requires the bundled data and makes no data downloads.
-# Optional: --from-raw repeats raw-data cleaning, spatial matching, and estimation.
-# Optional: --data-dir="/path/to/downloaded CSVs" uses a local 380K file in RAW mode.
-# RStudio: options(assessment.mode="raw", assessment.data_dir="/path/to/CSVs"); source("analysis.R")
-# Optional: --install installs missing R packages in tools/R-library.
-# Optional: --compile also builds all PDFs with XeLaTeX (two passes each).
-# All reported estimates and graphics are calculated here, in R.
+
 
 args <- commandArgs(trailingOnly = TRUE)
 script_arg <- grep("^--file=", commandArgs(FALSE), value = TRUE)
