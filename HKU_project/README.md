@@ -1,12 +1,12 @@
 # County income and the visibility of plant based dining
 
-Youmin Li | PhD / MPhil Stage 1 technical assessment | Dataset option 2
+Youmin Li | Stage 1 technical assessment | Dataset option 2
 
 This project studies the association between county income and two measures of plant-based dining in the specified U.S. restaurant dataset. It distinguishes primary-category vegan/vegetarian specialists from outlets carrying either label anywhere in their category list. The analysis is cross-sectional and descriptive, with state fixed effects and population-density controls; it does not estimate a causal income effect.
 
 ## Files to submit
 
-- `research_brief.pdf`: two pages of main text, followed by one page of references, which the assessment excludes from the main-text limit.
+- `brief_report.pdf`: two pages of main text, followed by one page of references, which the assessment excludes from the main-text limit.
 - `visual_appendix.pdf`: two standalone pages containing two figures and two tables; four objects in total.
 - `ai_usage_declaration.pdf`: the required seven-task checklist, with substantial AI assistance disclosed.
 - `analysis.R`, `data/clean/`, and `results/`: reproducible R code, cleaned data, numerical outputs, and verification records.
@@ -14,22 +14,9 @@ This project studies the association between county income and two measures of p
 
 The brief uses Times New Roman, 11-point body text, single spacing, one-inch margins on letter paper, and a six-point interparagraph gap representing three points before and after. Figure and table notes use a smaller readable font.
 
-## Open in Overleaf
-
-Import `Youmin_Li_Overleaf.zip` as a new Overleaf project. Alternatively, upload the contents of this package's `overleaf/` directory, keeping those files at the project root. Open **Settings > Compiler** and select **XeLaTeX**, set **Main document** to `main.tex`, then click **Recompile**. If an old error persists, choose **Recompile from scratch**.
-
-The `fontspec` package needs XeLaTeX or LuaLaTeX; direct pdfLaTeX cannot load the bundled TrueType fonts. The included `latexmkrc` selects XeLaTeX and also routes latexmk's `-pdf` mode through XeLaTeX. Keep `fontspec` and the supplied Times New Roman font files to preserve the required typeface. See `overleaf/README.md` for the compiler setup.
-
-- `main.tex` compiles the complete assessment in one PDF.
-- Set `research_brief.tex` as the main document to build the brief and references separately.
-- Set `visual_appendix.tex` as the main document to build the two-page appendix.
-- Set `ai_usage_declaration.tex` as the main document to build the declaration.
-
-The existing figures and numeric insertions are included, so Overleaf does not need to run R or contact the data providers. R must be run locally when changing the analysis; then upload the updated `overleaf/generated/` directory. The original Microsoft core-font installer, its extracted unchanged assets, and the original EULA are included under `overleaf/fonts/`.
-
 ## Run the analysis
 
-Use R 4.3 or later with `data.table`, `sf`, `ggplot2`, `sandwich`, and `digest`. Exact versions used for this execution are in `results/R_package_versions.csv`, with dependencies and native-library details in `results/sessionInfo.txt`. The spatial package `sf` requires GDAL, GEOS, PROJ, and UDUNITS support; standard Windows and macOS R binaries generally include these, while source installations need their system libraries.
+Use R with `data.table`, `sf`, `ggplot2`, `sandwich`, and `digest`. Exact versions used for this execution are in `results/R_package_versions.csv`, with dependencies and native-library details in `results/sessionInfo.txt`. The spatial package `sf` requires GDAL, GEOS, PROJ, and UDUNITS support; standard Windows and macOS R binaries generally include these, while source installations need their system libraries.
 
 From a terminal:
 
@@ -49,9 +36,9 @@ Rscript analysis.R --from-raw --install
 
 RAW mode validates the SHA-256 hashes of all five inputs, cleans the restaurant file, assigns counties, merges the Census data, estimates all models, and recreates all outputs. Four unmodified Census source files are included in `data/raw/`, so a Census server returning HTTP 403 does not block a reconstruction from this package. If no local 380K CSV is available, the script uses a cached restaurant archive or downloads the pinned Kaggle version (approximately 271 MB compressed). The archive contains two CSV files; only the 380K file is analyzed. A full reconstruction needs approximately 1.3 GB of free disk space. No Kaggle account, API credentials, or Census API key is needed.
 
-### Use your already downloaded restaurant CSV
+### Use downloaded restaurant CSV
 
-If `380K_US_Restaurants.csv` is already on your computer, use it directly:
+`380K_US_Restaurants.csv` is computer, use it directly:
 
 ```sh
 Rscript analysis.R --from-raw --data-dir="/Users/macpro/Downloads/hku project"
@@ -88,12 +75,6 @@ Rscript analysis.R --from-clean --compile
 ```
 
 Compilation uses two passes per document and copies the three separate submission PDFs to the top directory. All statistical calculations and graphics use R. LaTeX supplies document layout only. The large restaurant archive and extracted raw files are omitted from the submission ZIP; the four Census source inputs are included. Source URLs and hashes remain in `data/raw/source_manifest.csv`.
-
-## If a source download returns HTTP 403
-
-HTTP 403 means the server or network refused the request. The source URL can still be valid, and changing the statistical code does not resolve that access restriction. The downloader now sends an explicit user-agent header, retries transient failures up to three times, and checks the hash before installing a downloaded file in the cache. It does not retry persistent 401/403/404 responses or a checksum mismatch. A failed response never becomes an accepted raw input.
-
-Use the complete package to avoid Census downloads: its four Census raw inputs match the pinned SHA-256 hashes, and CLEAN mode needs no data downloads at all. If you remove a cached raw input and its source remains blocked, download the original file in a browser and save it under the exact `data/raw/` filename shown in the error. The script verifies its hash before using it. RAW mode stops on an unresolved source error; it never silently switches to CLEAN mode.
 
 ## Design and cleaning decisions
 
@@ -135,6 +116,19 @@ Open `data_dictionary.csv` for variable definitions. Restaurant identifiers and 
 
 The raw-data pipeline was executed in R; the clean-data route was also rerun from a separate project location. Estimates were compared, all LaTeX entry points compiled, page counts checked, and rendered PDF pages visually reviewed. The brief has two main-text pages plus references, the appendix has two pages, and the declaration has one page. The bundled typeface is embedded in the PDFs.
 
-The November 3, 2026 local-file and download fixes were verified with both CLEAN and RAW executions from another working directory with all data downloads disabled. The RAW run used the original public 380K CSV in a path containing spaces and repeated cleaning, spatial matching, estimation, and figure generation. Sample flow and five numerical results tables reproduced the original values, and the generated LaTeX numbers and tables matched byte for byte. RStudio-style `source()` options were also checked. Separate HTTP tests checked successful downloads, cached reuse, HTTP 403, transient failures, and checksum rejection. The local CSV and all four included Census inputs match pinned hashes. See `results/download_fix_verification.txt` and `results/local_csv_verification.txt` for the checks performed for each change.
+The local-file and download fixes were verified with both CLEAN and RAW executions from another working directory with all data downloads disabled. The RAW run used the original public 380K CSV in a path containing spaces and repeated cleaning, spatial matching, estimation, and figure generation. Sample flow and five numerical results tables reproduced the original values, and the generated LaTeX numbers and tables matched byte for byte. RStudio-style `source()` options were also checked. Separate HTTP tests checked successful downloads, cached reuse, HTTP 403, transient failures, and checksum rejection. The local CSV and all four included Census inputs match pinned hashes. See `results/download_fix_verification.txt` and `results/local_csv_verification.txt` for the checks performed for each change.
 
 The result concerns the visibility of labels in the observed listings. It does not measure all restaurants, verified menu availability, affordability, emissions, or the diets of individual residents. The broad income association is sensitive to weighting, and the specialist estimate is imprecise. Review the code, sources, interpretation, and AI declaration before submitting. Candidate judgment and independent understanding are not asserted to have been supplied by an automated workflow.
+
+## Open in Overleaf
+
+Import `Youmin_Li_Overleaf.zip` as a new Overleaf project. Alternatively, upload the contents of this package's `overleaf/` directory, keeping those files at the project root. Open **Settings > Compiler** and select **XeLaTeX**, set **Main document** to `main.tex`, then click **Recompile**. If an old error persists, choose **Recompile from scratch**.
+
+The `fontspec` package needs XeLaTeX or LuaLaTeX; direct pdfLaTeX cannot load the bundled TrueType fonts. The included `latexmkrc` selects XeLaTeX and also routes latexmk's `-pdf` mode through XeLaTeX. Keep `fontspec` and the supplied Times New Roman font files to preserve the required typeface. See `overleaf/README.md` for the compiler setup.
+
+- `main.tex` compiles the complete assessment in one PDF.
+- Set `research_brief.tex` as the main document to build the brief and references separately.
+- Set `visual_appendix.tex` as the main document to build the two-page appendix.
+- Set `ai_usage_declaration.tex` as the main document to build the declaration.
+
+The existing figures and numeric insertions are included, so Overleaf does not need to run R or contact the data providers. R must be run locally when changing the analysis; then upload the updated `overleaf/generated/` directory. The original Microsoft core-font installer, its extracted unchanged assets, and the original EULA are included under `overleaf/fonts/`.
