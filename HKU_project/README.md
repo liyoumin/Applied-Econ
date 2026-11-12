@@ -4,16 +4,6 @@ Youmin Li | Stage 1 technical assessment | Dataset option 2
 
 This project studies the association between county income and two measures of plant-based dining in the specified U.S. restaurant dataset. It distinguishes primary-category vegan/vegetarian specialists from outlets carrying either label anywhere in their category list. The analysis is cross-sectional and descriptive, with state fixed effects and population-density controls; it does not estimate a causal income effect.
 
-## Files to submit
-
-- `brief_report.pdf`: two pages of main text, followed by one page of references, which the assessment excludes from the main-text limit.
-- `visual_appendix.pdf`: two standalone pages containing two figures and two tables; four objects in total.
-- `ai_usage_declaration.pdf`: the required seven-task checklist, with substantial AI assistance disclosed.
-- `analysis.R`, `data/clean/`, and `results/`: reproducible R code, cleaned data, numerical outputs, and verification records.
-- `overleaf/`: editable LaTeX source, figures, generated numbers, and the unchanged font assets needed to compile the documents.
-
-The brief uses Times New Roman, 11-point body text, single spacing, one-inch margins on letter paper, and a six-point interparagraph gap representing three points before and after. Figure and table notes use a smaller readable font.
-
 ## Run the analysis
 
 Use R with `data.table`, `sf`, `ggplot2`, `sandwich`, and `digest`. Exact versions used for this execution are in `results/R_package_versions.csv`, with dependencies and native-library details in `results/sessionInfo.txt`. The spatial package `sf` requires GDAL, GEOS, PROJ, and UDUNITS support; standard Windows and macOS R binaries generally include these, while source installations need their system libraries.
