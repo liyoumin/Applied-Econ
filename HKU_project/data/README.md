@@ -2,7 +2,7 @@
 
 Youmin Li | Stage 1 technical assessment | Dataset option 2
 
-## Stage 1 Assessment
+## Research Questions
 
 The assessment asks whether plant-based dining is more visible in higher-income U.S. counties. I compare the share of listings carrying any vegan or vegetarian tag with the share whose primary category identifies a specialist. Higher household income could support demand for plant-based dining. General restaurants can respond by adding or advertising plant-based dishes. Sustained demand may support entry by dedicated specialists.
 
